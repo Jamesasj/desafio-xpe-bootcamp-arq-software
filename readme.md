@@ -9,9 +9,7 @@ Este guia cria um ambiente completo no GCP com:
 
 - Segurança via firewall, IAM e monitoramento
 
-
-![image](https://github.com/user-attachments/assets/45f479dd-218d-4dd3-9b9a-9791636bced8)
-
+![image](https://github.com/user-attachments/assets/ad17408e-c50b-4f2b-86ff-fa937f147e2a)
 
 
 ### 1️⃣ Criação e Configuração das VMs
