@@ -1,5 +1,6 @@
 # 🛠️ Provisionamento de Ambiente no Google Cloud Platform (GCP)
-Este guia cria um ambiente completo no GCP com:
+
+Este documento cria um ambiente completo no GCP com:
 
 - Múltiplas VMs em zonas distintas com escalonamento automático
 
@@ -11,7 +12,7 @@ Este guia cria um ambiente completo no GCP com:
 
 ![image](https://github.com/user-attachments/assets/ad17408e-c50b-4f2b-86ff-fa937f147e2a)
 
-
+# Parametros usados na criação do ambiente:
 ### 1️⃣ Criação e Configuração das VMs
 1.1 Criar modelo de instância
 ```bash
@@ -157,14 +158,14 @@ gcloud projects add-iam-policy-binding PROJECT_ID \
 Substitua PROJECT_ID e PROJECT_NUMBER pelos valores reais.
 ```
 
-3.2 Habilitar conexão com banco via Cloud SQL Auth Proxy (ex: na VM)
-Instale e configure o Cloud SQL Auth Proxy, ou use a conexão nativa com IP privado.
-
-3.3 Ativar Cloud Monitoring
+3.2 Criar firewall para o banco de dados
 
 ```bash
-gcloud services enable monitoring.googleapis.com logging.googleapis.com
-Acesse o Monitoring via Console: Monitoring → Metrics Explorer
+gcloud compute firewall-rules create allow-cloud-sql \
+  --allow=tcp:5432 \
+  --source-ranges=0.0.0.0/0 \
+  --target-tags=cloud-sql \
+  --description="Permitir acesso ao Cloud SQL"
 ```
 
 ✅ Conclusão
